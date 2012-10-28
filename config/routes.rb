@@ -3,6 +3,10 @@ Blog::Application.routes.draw do
 
   root to: "home#index"
 
+  match 'auth/:provider/callback', to: "session#create"
+  match 'auth/failure', to: redirect('/')
+  match 'signout', to: "session#destroy", as: 'signout'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
